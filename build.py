@@ -178,7 +178,7 @@ def page(meta, body):
     <div><strong>Domovio Media</strong><br>Immobilienfotografie<br>Rhein-Main-Gebiet</div>
     <div><a href="mailto:{MAIL}">{MAIL}</a><br><a href="tel:{TEL_LINK}">{TEL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @domovio.media</a></div>
     <div><a href="/immobilienfotograf-rhein-main/">Region</a><br><a href="/haeufige-fragen/">Häufige Fragen</a></div>
-    <div><a href="/impressum/">Impressum</a><br><a href="/datenschutz/">Datenschutz</a></div>
+    <div><a href="/impressum/">Impressum</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="/widerruf/">Widerruf</a></div>
   </div>
 </footer>
 <script src="/assets/js/main.js" defer></script>
