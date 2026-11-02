@@ -1,0 +1,200 @@
+[
+ {
+  "from": false,
+  "group": "Immobilienfotografie",
+  "id": "AF87650C-E239-4321-AF45-A22189CE4FD2",
+  "price": 200,
+  "text": "Anfertigung, Bearbeitung und Bereitstellung von bis zu 15 bearbeiteten Fotos",
+  "title": "Immobilienfotografie – Basic",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Immobilienfotografie",
+  "id": "CD8D3C4C-8AFD-48B1-98F5-074DA01E9D20",
+  "price": 300,
+  "text": "Anfertigung, Bearbeitung und Bereitstellung von bis zu 25 bearbeiteten Fotos",
+  "title": "Immobilienfotografie – Standard",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Immobilienfotografie",
+  "id": "017C218B-86E2-40CD-A0B3-020B75F37363",
+  "price": 450,
+  "text": "Anfertigung, Bearbeitung und Bereitstellung von bis zu 40 bearbeiteten Fotos",
+  "title": "Immobilienfotografie – Premium",
+  "unit": "Pauschale"
+ },
+ {
+  "from": true,
+  "group": "Immobilienfotografie",
+  "id": "920EA0C1-E3A6-4531-B4BD-456E0A6E33D3",
+  "price": 600,
+  "text": "Ab 40 bearbeitete Fotos inkl. Detailaufnahmen",
+  "title": "Immobilienfotografie – Luxus-Objekt",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Immobilienvideo",
+  "id": "12F92B84-7818-47E7-8404-2BA375096B24",
+  "price": 150,
+  "text": "Kurzvideo (30–45 Sek.)",
+  "title": "Immobilienvideo – Reel Basic",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Immobilienvideo",
+  "id": "7AFC2488-2508-4F35-AB10-EF9B3A791C9D",
+  "price": 250,
+  "text": "Video (60–90 Sek.)",
+  "title": "Immobilienvideo – Standard",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Immobilienvideo",
+  "id": "0C5C6FA9-1463-49AA-942C-AB6C33DF5D02",
+  "price": 400,
+  "text": "Film (2–3 Minuten)",
+  "title": "Immobilienvideo – Premium Film",
+  "unit": "Pauschale"
+ },
+ {
+  "from": true,
+  "group": "Immobilienvideo",
+  "id": "7A845BF9-3F43-4497-A157-EBCB859195D3",
+  "price": 700,
+  "text": "Individuelle Videoproduktion für Luxus-Objekte",
+  "title": "Immobilienvideo – Luxus-Objekt",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Drohnenaufnahmen",
+  "id": "4E66F99E-6668-40C8-AE3D-022B3C40C351",
+  "price": 100,
+  "text": "5 bearbeitete Luftbilder",
+  "title": "Drohnenaufnahmen – 5 Luftbilder",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Drohnenaufnahmen",
+  "id": "33D17F77-54A3-43F3-BA40-BB7E8CDCBC1F",
+  "price": 150,
+  "text": "10 bearbeitete Luftbilder",
+  "title": "Drohnenaufnahmen – 10 Luftbilder",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Drohnenaufnahmen",
+  "id": "E05B9BA9-2A77-4239-8BF3-3A5B2F3C839F",
+  "price": 150,
+  "text": "Luftaufnahmen als Video",
+  "title": "Drohnenvideo",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Drohnenaufnahmen",
+  "id": "7D1EF604-AE08-4538-8FFB-F0DB853558A8",
+  "price": 250,
+  "text": "Luftbilder und Drohnenvideo",
+  "title": "Drohne – Foto + Video Paket",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Kombi-Pakete",
+  "id": "5CF7D23C-B8E7-44F0-A815-3D3150D6C0B8",
+  "price": 450,
+  "text": "25 bearbeitete Fotos, Reel, 5 Drohnenfotos",
+  "title": "Paket „Makler Standard“",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Kombi-Pakete",
+  "id": "AF4FCBA4-C2F6-4BAF-8818-7C7BF9F8A9AD",
+  "price": 700,
+  "text": "40 bearbeitete Fotos, Video, Drohnenaufnahmen, Reel",
+  "title": "Paket „Premium Vermarktung“",
+  "unit": "Pauschale"
+ },
+ {
+  "from": true,
+  "group": "Kombi-Pakete",
+  "id": "25047C9E-3BC8-4D78-B0B1-B2D9BF411383",
+  "price": 1200,
+  "text": "Komplettpaket Fotografie, Video und Drohne",
+  "title": "Paket „Luxury Estate“",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Zusatzleistungen",
+  "id": "15D67A02-0CFF-40AF-94C2-B492D0C66AF6",
+  "price": 80,
+  "text": "Lieferung innerhalb von 24 Stunden",
+  "title": "Express-Lieferung",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Zusatzleistungen",
+  "id": "9E038E15-AE68-4186-8335-F2A6AD63D50D",
+  "price": 50,
+  "text": "",
+  "title": "Grundriss 2D",
+  "unit": "Stück"
+ },
+ {
+  "from": false,
+  "group": "Zusatzleistungen",
+  "id": "EA8E340F-0A2C-4224-A666-C7B58F833C9A",
+  "price": 90,
+  "text": "",
+  "title": "Grundriss 3D",
+  "unit": "Stück"
+ },
+ {
+  "from": true,
+  "group": "Zusatzleistungen",
+  "id": "5F5712F5-933E-4A16-9EB3-4DC6EDCC22F4",
+  "price": 150,
+  "text": "Virtueller 360°-Rundgang",
+  "title": "360° Rundgang",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Zusatzleistungen",
+  "id": "CB2DC8CB-B2F2-44A8-A2B5-038B64599037",
+  "price": 25,
+  "text": "Digitale Möblierung",
+  "title": "Virtuelles Homestaging",
+  "unit": "Bild"
+ },
+ {
+  "from": false,
+  "group": "Zusatzleistungen",
+  "id": "F9C08A6A-0B1E-4A54-9421-6A57C8EC8830",
+  "price": 100,
+  "text": "",
+  "title": "Dämmerungsaufnahmen",
+  "unit": "Pauschale"
+ },
+ {
+  "from": false,
+  "group": "Zusatzleistungen",
+  "id": "AE6BCB02-6374-44AB-9E46-A443450CEC6B",
+  "price": 100,
+  "text": "Zusätzliches Reel für Social Media",
+  "title": "Social-Media-Reel extra",
+  "unit": "Pauschale"
+ }
+]

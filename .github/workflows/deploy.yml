@@ -1,0 +1,39 @@
+name: Auf Strato hochladen
+
+# Läuft nur von Hand: Actions > "Auf Strato hochladen" > Run workflow.
+# Probelauf ist Standard und zeigt nur, was passieren würde.
+on:
+  workflow_dispatch:
+    inputs:
+      probelauf:
+        description: "Nur anzeigen, nichts hochladen oder löschen"
+        type: boolean
+        default: true
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+    env:
+      LFTP_PASSWORD: ${{ secrets.STRATO_SFTP_PASSWORD }}
+      SFTP_USER: ${{ secrets.STRATO_SFTP_USER }}
+      SFTP_HOST: ${{ secrets.STRATO_SFTP_HOST }}
+      SFTP_PATH: ${{ secrets.STRATO_SFTP_PATH }}
+      PROBE: ${{ inputs.probelauf && '--dry-run' || '' }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Sitemap-Datum kommt aus der Git-Historie
+      - name: Seite bauen
+        run: python3 build.py
+      - name: lftp installieren
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+      - name: Per SFTP abgleichen
+        # --delete entfernt alles im Zielordner, was nicht zur Seite gehört.
+        # STRATO_SFTP_PATH muss deshalb ein eigener Ordner nur für diese Seite sein.
+        run: |
+          test -n "$SFTP_PATH" && test "$SFTP_PATH" != "/"
+          lftp -u "$SFTP_USER" --env-password "sftp://$SFTP_HOST" -e "
+            set sftp:auto-confirm yes;
+            set net:max-retries 2;
+            mirror --reverse --delete --verbose --only-newer $PROBE public/ $SFTP_PATH;
+            bye"
