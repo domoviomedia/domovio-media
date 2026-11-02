@@ -82,7 +82,7 @@ LOCAL_BUSINESS = json.dumps({
     "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": SITE + "/#business",
     "name": "Domovio Media",
-    "description": "Immobilienfotografie, Video und Drohnenaufnahmen für Makler im Rhein-Main-Gebiet.",
+    "description": "Immobilienfotografie, Video und Drohnenaufnahmen für Makler und private Eigentümer im Rhein-Main-Gebiet.",
     "url": SITE + "/",
     "email": MAIL,
     "telephone": TEL_LINK,
