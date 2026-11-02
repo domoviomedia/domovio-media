@@ -8,6 +8,7 @@ Platzhalter im Text:
   {{preise:Gruppe}}             Preisliste aus src/preise.json
   {{mail}} {{tel}} {{tel_link}} {{site}}
 """
+import hashlib
 import json
 import pathlib
 import re
@@ -26,6 +27,8 @@ SRC = ROOT / "src"
 OUT = ROOT / "public"
 NAV = [("/leistungen/", "Leistungen & Preise"), ("/referenzen/", "Referenzen"), ("/ablauf/", "Ablauf")]
 PRICES = json.loads((SRC / "preise.json").read_text("utf-8"))
+# Neue Fassung, neue Adresse: Browser laden geänderte Formatierung sofort.
+CSS_VERSION = hashlib.sha256((SRC / "assets/css/style.css").read_bytes()).hexdigest()[:8]
 
 
 def euro(value):
@@ -159,7 +162,7 @@ def page(meta, body):
 <meta name="theme-color" content="#f3efe6">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="preload" href="/assets/fonts/BricolageGrotesque-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="/assets/css/style.css?v={CSS_VERSION}">
 {ld}
 </head>
 <body>

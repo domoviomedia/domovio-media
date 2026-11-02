@@ -121,7 +121,7 @@ p { margin: 0 0 1em; }
 .schritte li { counter-increment: s; display: grid; gap: 6px; padding: 24px 0; border-bottom: 1px solid var(--linie); }
 .schritte li::before { content: "0" counter(s); font: 400 .875rem var(--mono); color: var(--ziegel); }
 .schritte h2 { font-size: clamp(1.8rem, 5vw, 3rem); }
-.schritte p { margin: 0; max-width: 40em; }
+.schritte p { margin: 0; max-width: 40em; text-wrap: balance; }
 .liste { margin: 0; padding-left: 1.2em; }
 .liste li { margin-bottom: .4em; }
 
@@ -177,8 +177,8 @@ p { margin: 0 0 1em; }
   .preise li { padding: 20px 0; }
   .preise strong { font-size: 1.6rem; }
   .preise b { font-size: 1.2rem; }
-  .schritte li { grid-template-columns: 72px 240px 1fr; align-items: baseline; gap: 24px; }
-  .schritte h2 { font-size: 2.25rem; }
+  .schritte li { grid-template-columns: 72px 240px 1fr; align-items: center; gap: 24px; min-height: 112px; padding: 16px 0; }
+  .schritte h2 { font-size: 2.25rem; line-height: 1; }
   .vorbereitung { display: grid; grid-template-columns: 336px 1fr; column-gap: 24px; align-items: baseline; }
   .vorbereitung .mass { grid-column: 1 / -1; }
   .vorbereitung h2 { font-size: 2.25rem; margin: 0; }
