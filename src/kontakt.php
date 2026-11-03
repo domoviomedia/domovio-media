@@ -32,7 +32,7 @@ $text = "Neue Anfrage über domoviomedia.de\n\n"
     . 'Firma: ' . feld('firma') . "\n"
     . "E-Mail: $email\n"
     . 'Telefon: ' . feld('telefon') . "\n"
-    . 'Objekt / Ort: ' . feld('objekt') . "\n"
+    . 'Immobilie / Ort: ' . feld('objekt') . "\n"
     . 'Interesse: ' . feld('leistung') . "\n\n"
     . $nachricht . "\n";
 
