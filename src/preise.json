@@ -144,24 +144,6 @@
   "unit": "Pauschale"
  },
  {
-  "from": false,
-  "group": "Zusatzleistungen",
-  "id": "9E038E15-AE68-4186-8335-F2A6AD63D50D",
-  "price": 50,
-  "text": "",
-  "title": "Grundriss 2D",
-  "unit": "Stück"
- },
- {
-  "from": false,
-  "group": "Zusatzleistungen",
-  "id": "EA8E340F-0A2C-4224-A666-C7B58F833C9A",
-  "price": 90,
-  "text": "",
-  "title": "Grundriss 3D",
-  "unit": "Stück"
- },
- {
   "from": true,
   "group": "Zusatzleistungen",
   "id": "5F5712F5-933E-4A16-9EB3-4DC6EDCC22F4",
