@@ -77,8 +77,11 @@ def fill(text):
 
 HERO = "immobilienfoto-wintergarten-treppe"
 
-MARK = ('<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 23 24 6l19 17M11 18v24h26V18" fill="none" '
-        'stroke="currentColor" stroke-width="3" stroke-linecap="square"/></svg>')
+# Logo D aus Documents/claude_skills/Domovio-Logo/logo-d.svg, Geometrie unverändert.
+MARK = ('<svg viewBox="74 2 50 56" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linejoin="round" '
+        'aria-hidden="true"><path d="M78 54 V20 L95 6 L104 13 C114.7 19 120 27.3 120 38 C120 48.7 114 54 102 54 Z"/>'
+        '<rect x="90" y="38" width="10" height="16" stroke-width="3" stroke-linejoin="miter"/></svg>')
+WORDMARK = '<span class="wort"><b>Domovio</b><small>Real Estate Media</small></span>'
 
 LOCAL_BUSINESS = json.dumps({
     "@context": "https://schema.org",
@@ -90,6 +93,7 @@ LOCAL_BUSINESS = json.dumps({
     "email": MAIL,
     "telephone": TEL_LINK,
     "image": f"{SITE}/assets/img/{HERO}-1600.jpg",
+    "logo": SITE + "/assets/img/logo-512.png",
     "priceRange": "€€",
     "address": {"@type": "PostalAddress", "streetAddress": "Lerchenstr. 5", "postalCode": "64823",
                 "addressLocality": "Groß-Umstadt", "addressRegion": "Hessen", "addressCountry": "DE"},
@@ -161,6 +165,7 @@ def page(meta, body):
 {preload}
 <meta name="theme-color" content="#f3efe6">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
 <link rel="preload" href="/assets/fonts/BricolageGrotesque-Bold.ttf" as="font" type="font/ttf" crossorigin>
 <link rel="stylesheet" href="/assets/css/style.css?v={CSS_VERSION}">
 {ld}
@@ -168,7 +173,7 @@ def page(meta, body):
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt</a>
 <header class="kopf">
-  <a class="marke" href="/" aria-label="Domovio Media, Startseite">{MARK}<span>Domovio <i>Media</i></span></a>
+  <a class="marke" href="/" aria-label="Domovio Media, Startseite">{MARK}{WORDMARK}</a>
   <button class="menue" aria-expanded="false" aria-controls="nav">Menü</button>
   <nav id="nav" aria-label="Hauptnavigation">{nav}<a class="anfrage" href="/kontakt/">Anfrage</a></nav>
 </header>
@@ -178,7 +183,7 @@ def page(meta, body):
 <footer class="fuss">
   <div class="fuss-gross"><p>Immobilien sichtbar machen.</p><a class="knopf hell" href="/kontakt/">Shooting anfragen</a></div>
   <div class="fuss-spalten">
-    <div><strong>Domovio Media</strong><br>Immobilienfotografie<br>Rhein-Main-Gebiet</div>
+    <div><a class="marke" href="/" aria-label="Domovio Media, Startseite">{MARK}{WORDMARK}</a><p>Immobilienfotografie<br>Rhein-Main-Gebiet</p></div>
     <div><a href="mailto:{MAIL}">{MAIL}</a><br><a href="tel:{TEL_LINK}">{TEL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @domovio.media</a></div>
     <div><a href="/immobilienfotograf-rhein-main/">Region</a><br><a href="/haeufige-fragen/">Häufige Fragen</a></div>
     <div><a href="/impressum/">Impressum</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="/widerruf/">Widerruf</a></div>
