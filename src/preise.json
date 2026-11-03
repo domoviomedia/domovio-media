@@ -32,7 +32,7 @@
   "id": "920EA0C1-E3A6-4531-B4BD-456E0A6E33D3",
   "price": 600,
   "text": "Ab 40 bearbeitete Fotos inkl. Detailaufnahmen",
-  "title": "Immobilienfotografie – Luxus-Objekt",
+  "title": "Immobilienfotografie – Luxus-Immobilie",
   "unit": "Pauschale"
  },
  {
@@ -67,8 +67,8 @@
   "group": "Immobilienvideo",
   "id": "7A845BF9-3F43-4497-A157-EBCB859195D3",
   "price": 700,
-  "text": "Individuelle Videoproduktion für Luxus-Objekte",
-  "title": "Immobilienvideo – Luxus-Objekt",
+  "text": "Individuelle Videoproduktion für Luxus-Immobilien",
+  "title": "Immobilienvideo – Luxus-Immobilie",
   "unit": "Pauschale"
  },
  {
