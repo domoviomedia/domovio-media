@@ -2,9 +2,10 @@ Options -Indexes
 ErrorDocument 404 /404.html
 
 RewriteEngine On
+# Alles auf https://propertale.de, auch www und die alte Adresse domoviomedia.de.
 RewriteCond %{HTTPS} off [OR]
-RewriteCond %{HTTP_HOST} ^www\. [NC]
-RewriteRule ^ https://domoviomedia.de%{REQUEST_URI} [L,R=301]
+RewriteCond %{HTTP_HOST} !^propertale\.de$ [NC]
+RewriteRule ^ https://propertale.de%{REQUEST_URI} [L,R=301]
 
 <IfModule mod_expires.c>
   ExpiresActive On

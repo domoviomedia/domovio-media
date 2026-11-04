@@ -16,11 +16,11 @@ import shutil
 import subprocess
 from html import escape
 
-SITE = "https://domoviomedia.de"
-MAIL = "info@domoviomedia.de"
+SITE = "https://propertale.de"
+MAIL = "info@propertale.de"
 TEL = "0171 8181922"
 TEL_LINK = "+491718181922"
-INSTAGRAM = "https://www.instagram.com/domovio.media/"
+INSTAGRAM = "https://www.instagram.com/propertale.media/"
 
 ROOT = pathlib.Path(__file__).parent
 SRC = ROOT / "src"
@@ -77,17 +77,18 @@ def fill(text):
 
 HERO = "immobilienfoto-wintergarten-treppe"
 
-# Logo D aus Documents/claude_skills/Domovio-Logo/logo-d.svg, Geometrie unverändert.
+# Logo P aus Documents/claude_skills/Propertale-Logo/logo-p.svg, Geometrie unverändert.
 MARK = ('<svg viewBox="74 2 50 56" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linejoin="round" '
-        'aria-hidden="true"><path d="M78 54 V20 L95 6 L104 13 C114.7 19 120 27.3 120 38 C120 48.7 114 54 102 54 Z"/>'
-        '<rect x="90" y="38" width="10" height="16" stroke-width="3" stroke-linejoin="miter"/></svg>')
-WORDMARK = '<span class="wort"><b>Domovio</b><small>Real Estate Media</small></span>'
+        'stroke-linecap="round" aria-hidden="true">'
+        '<path d="M78 54 V20 L95 6 L104 13 C113 18 117 23.5 117 29.5 C117 37 111.5 41 102 41 H78"/>'
+        '<rect x="89" y="27" width="9" height="14" stroke-width="3" stroke-linejoin="miter"/></svg>')
+WORDMARK = '<span class="wort"><b>Propertale</b><small>Real Estate Stories &amp; Visuals</small></span>'
 
 LOCAL_BUSINESS = json.dumps({
     "@context": "https://schema.org",
     "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": SITE + "/#business",
-    "name": "Domovio Media",
+    "name": "Propertale",
     "description": "Immobilienfotografie, Video und Drohnenaufnahmen für Makler und private Eigentümer im Rhein-Main-Gebiet.",
     "url": SITE + "/",
     "email": MAIL,
@@ -121,7 +122,7 @@ def structured_data(meta):
         ]}, ensure_ascii=False))
     if path == "/leistungen/":
         blocks.append(json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService",
-                                  "@id": SITE + "/#business", "name": "Domovio Media", "hasOfferCatalog": {
+                                  "@id": SITE + "/#business", "name": "Propertale", "hasOfferCatalog": {
             "@type": "OfferCatalog", "name": "Leistungen und Preise",
             "itemListElement": [offer(e) for e in PRICES]}}, ensure_ascii=False))
     return blocks
@@ -153,14 +154,14 @@ def page(meta, body):
 {canonical}{robots}
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_DE">
-<meta property="og:site_name" content="Domovio Media">
+<meta property="og:site_name" content="Propertale">
 <meta property="og:title" content="{escape(meta["title"])}">
 <meta property="og:description" content="{escape(meta["description"])}">
 <meta property="og:url" content="{SITE}{path}">
 <meta property="og:image" content="{SITE}/assets/img/{HERO}-1600.jpg">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="1066">
-<meta property="og:image:alt" content="Helles Wohnhaus mit Wintergarten und Holztreppe, fotografiert von Domovio Media">
+<meta property="og:image:alt" content="Helles Wohnhaus mit Wintergarten und Holztreppe, fotografiert von Propertale">
 <meta name="twitter:card" content="summary_large_image">
 {preload}
 <meta name="theme-color" content="#f3efe6">
@@ -173,7 +174,7 @@ def page(meta, body):
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt</a>
 <header class="kopf">
-  <a class="marke" href="/" aria-label="Domovio Media, Startseite">{MARK}{WORDMARK}</a>
+  <a class="marke" href="/" aria-label="Propertale, Startseite">{MARK}{WORDMARK}</a>
   <button class="menue" aria-expanded="false" aria-controls="nav">Menü</button>
   <nav id="nav" aria-label="Hauptnavigation">{nav}<a class="anfrage" href="/kontakt/">Anfrage</a></nav>
 </header>
@@ -183,8 +184,8 @@ def page(meta, body):
 <footer class="fuss">
   <div class="fuss-gross"><p>Immobilien sichtbar machen.</p><a class="knopf hell" href="/kontakt/">Shooting anfragen</a></div>
   <div class="fuss-spalten">
-    <div><a class="marke" href="/" aria-label="Domovio Media, Startseite">{MARK}{WORDMARK}</a><p>Immobilienfotografie<br>Rhein-Main-Gebiet</p></div>
-    <div><a href="mailto:{MAIL}">{MAIL}</a><br><a href="tel:{TEL_LINK}">{TEL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @domovio.media</a></div>
+    <div><a class="marke" href="/" aria-label="Propertale, Startseite">{MARK}{WORDMARK}</a><p>Immobilienfotografie<br>Rhein-Main-Gebiet</p></div>
+    <div><a href="mailto:{MAIL}">{MAIL}</a><br><a href="tel:{TEL_LINK}">{TEL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @propertale.media</a></div>
     <div><a href="/immobilienfotograf-rhein-main/">Region</a><br><a href="/haeufige-fragen/">Häufige Fragen</a></div>
     <div><a href="/impressum/">Impressum</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="/widerruf/">Widerruf</a></div>
   </div>

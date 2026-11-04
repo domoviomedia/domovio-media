@@ -1,7 +1,7 @@
 <?php
 // Nimmt das Anfrageformular entgegen und schickt es per Mail. Speichert nichts.
-const EMPFAENGER = 'info@domoviomedia.de';
-const ABSENDER = 'website@domoviomedia.de';
+const EMPFAENGER = 'info@propertale.de';
+const ABSENDER = 'website@propertale.de';
 
 function weiter(string $ziel): void {
     header('Location: ' . $ziel, true, 303);
@@ -27,7 +27,7 @@ if ($name === '' || $nachricht === '' || !filter_var($email, FILTER_VALIDATE_EMA
     weiter('/kontakt/?fehler=1#formular');
 }
 
-$text = "Neue Anfrage über domoviomedia.de\n\n"
+$text = "Neue Anfrage über propertale.de\n\n"
     . "Name: $name\n"
     . 'Firma: ' . feld('firma') . "\n"
     . "E-Mail: $email\n"
@@ -37,7 +37,7 @@ $text = "Neue Anfrage über domoviomedia.de\n\n"
     . $nachricht . "\n";
 
 $betreff = '=?UTF-8?B?' . base64_encode('Anfrage von ' . $name) . '?=';
-$kopf = "From: Domovio Media Website <" . ABSENDER . ">\r\n"
+$kopf = "From: Propertale Website <" . ABSENDER . ">\r\n"
     . "Reply-To: $email\r\n"
     . "Content-Type: text/plain; charset=UTF-8\r\n";
 

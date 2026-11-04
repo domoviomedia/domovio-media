@@ -1,4 +1,4 @@
-# Domovio Media
+# Propertale
 
 Statische Website für Immobilienfotografie im Rhein-Main-Gebiet. Quellen in `src/`, gebaut mit Python ohne Abhängigkeiten.
 
