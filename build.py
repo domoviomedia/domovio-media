@@ -77,12 +77,10 @@ def fill(text):
 
 HERO = "immobilienfoto-wintergarten-treppe"
 
-# Logo P aus Documents/claude_skills/Propertale-Logo/logo-p.svg, Geometrie unverändert.
-MARK = ('<svg viewBox="74 2 50 56" fill="none" stroke="currentColor" stroke-width="3.6" stroke-linejoin="round" '
-        'stroke-linecap="round" aria-hidden="true">'
-        '<path d="M78 54 V20 L95 6 L104 13 C113 18 117 23.5 117 29.5 C117 37 111.5 41 102 41 H78"/>'
-        '<rect x="89" y="27" width="9" height="14" stroke-width="3" stroke-linejoin="miter"/></svg>')
-WORDMARK = '<span class="wort"><b>Propertale</b><small>Real Estate Stories &amp; Visuals</small></span>'
+# Wortmarke aus Documents/claude_skills/Propertale-Logo/wortmarke.svg (Work Sans als Pfade, A als Dach),
+# direkt in die Seite gesetzt, damit sie die Textfarbe übernimmt.
+WORDMARK = (SRC / "assets/img/wortmarke.svg").read_text("utf-8").strip().replace(
+    "<svg ", '<svg class="wortmarke" aria-hidden="true" ', 1)
 
 LOCAL_BUSINESS = json.dumps({
     "@context": "https://schema.org",
@@ -174,7 +172,7 @@ def page(meta, body):
 <body>
 <a class="skip" href="#inhalt">Zum Inhalt</a>
 <header class="kopf">
-  <a class="marke" href="/" aria-label="Propertale, Startseite">{MARK}{WORDMARK}</a>
+  <a class="marke" href="/" aria-label="Propertale, Startseite">{WORDMARK}</a>
   <button class="menue" aria-expanded="false" aria-controls="nav">Menü</button>
   <nav id="nav" aria-label="Hauptnavigation">{nav}<a class="anfrage" href="/kontakt/">Anfrage</a></nav>
 </header>
@@ -184,7 +182,7 @@ def page(meta, body):
 <footer class="fuss">
   <div class="fuss-gross"><p>Immobilien sichtbar machen.</p><a class="knopf hell" href="/kontakt/">Shooting anfragen</a></div>
   <div class="fuss-spalten">
-    <div><a class="marke" href="/" aria-label="Propertale, Startseite">{MARK}{WORDMARK}</a><p>Immobilienfotografie<br>Rhein-Main-Gebiet</p></div>
+    <div><a class="marke" href="/" aria-label="Propertale, Startseite">{WORDMARK}</a><p>Immobilienfotografie<br>Rhein-Main-Gebiet</p></div>
     <div><a href="mailto:{MAIL}">{MAIL}</a><br><a href="tel:{TEL_LINK}">{TEL}</a><br><a href="{INSTAGRAM}" rel="noopener">Instagram @propertale.media</a></div>
     <div><a href="/immobilienfotograf-rhein-main/">Region</a><br><a href="/haeufige-fragen/">Häufige Fragen</a></div>
     <div><a href="/impressum/">Impressum</a><br><a href="/datenschutz/">Datenschutz</a><br><a href="/widerruf/">Widerruf</a></div>
