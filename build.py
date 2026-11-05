@@ -84,8 +84,8 @@ WORDMARK = (SRC / "assets/img/wortmarke.svg").read_text("utf-8").strip().replace
 
 # Einzugsgebiet wie im Google-Unternehmensprofil, damit Suchmaschinen und KI-Assistenten
 # überall dieselben Angaben finden.
-CITIES = ["Frankfurt am Main", "Darmstadt", "Offenbach am Main", "Hanau", "Wiesbaden", "Mainz", "Groß-Umstadt"]
-DISTRICTS = ["Landkreis Darmstadt-Dieburg", "Odenwaldkreis", "Main-Taunus-Kreis", "Hochtaunuskreis"]
+CITIES = ["Frankfurt am Main", "Darmstadt", "Offenbach am Main", "Hanau", "Wiesbaden", "Mainz", "Aschaffenburg", "Groß-Umstadt"]
+DISTRICTS = ["Landkreis Darmstadt-Dieburg", "Odenwaldkreis", "Main-Taunus-Kreis", "Hochtaunuskreis", "Landkreis Aschaffenburg"]
 SERVICES = ["Immobilienfotografie", "Immobilienvideo", "Drohnenaufnahmen", "Luftbilder", "360°-Rundgang",
             "Virtuelles Homestaging", "Dämmerungsaufnahmen", "Social-Media-Reels für Immobilien", "Exposé-Fotos"]
 DESCRIPTION = ("Propertale ist Immobilienfotografie von Fatih Gökce aus Groß-Umstadt: Fotos, Video und "
@@ -190,7 +190,8 @@ Immobilienmakler, Bauträger, Hausverwaltungen und private Eigentümer, die ihre
 
 {", ".join(CITIES)}, {", ".join(DISTRICTS)} und das gesamte Rhein-Main-Gebiet, \
 unter anderem auch Dieburg, Babenhausen, Reinheim, Pfungstadt, Griesheim, Weiterstadt, Erbach, Michelstadt, \
-Bad König, Hofheim, Bad Soden, Eschborn, Kelkheim, Bad Homburg, Oberursel, Königstein, Kronberg und Friedrichsdorf. \
+Bad König, Hofheim, Bad Soden, Eschborn, Kelkheim, Bad Homburg, Oberursel, Königstein, Kronberg, Friedrichsdorf, \
+Großostheim und Alzenau. \
 Im ganzen Gebiet gilt dieselbe Preisliste.
 
 ## Preise
