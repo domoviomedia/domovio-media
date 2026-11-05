@@ -296,6 +296,9 @@ def main():
     # Schlüsseldatei für IndexNow (Bing, Yandex): beweist, dass Meldungen von dieser Website kommen.
     for key in SRC.glob("[0-9a-f]" * 32 + ".txt"):
         shutil.copy(key, OUT / key.name)
+    # Bestätigungsdatei der Google Search Console, muss dauerhaft bleiben.
+    for proof in SRC.glob("google*.html"):
+        shutil.copy(proof, OUT / proof.name)
 
     urls = []
     for file in sorted((SRC / "pages").glob("*.html")):
