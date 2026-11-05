@@ -34,4 +34,4 @@ Zugangsdaten gehören nie ins Repo.
 
 ## Alter Name Domovio Media
 
-Bis November 2026 hieß die Seite Domovio Media. Repo, Ordner und der Webspace-Ordner `/domovio-media` tragen noch den alten Namen, Besucher sehen ihn nicht. domoviomedia.de bleibt registriert und leitet per `src/.htaccess` auf propertale.de weiter, damit alte Links funktionieren.
+Bis November 2026 hieß die Seite Domovio Media. Repo und lokaler Ordner heißen seit dem 05.11.2026 `propertale-website`. Nur der Webspace-Ordner `/domovio-media` bei Strato trägt noch den alten Namen, Besucher sehen ihn nicht. domoviomedia.de bleibt registriert und leitet per `src/.htaccess` auf propertale.de weiter, damit alte Links funktionieren.
