@@ -31,3 +31,7 @@ Nötige Secrets unter Settings, Secrets and variables, Actions:
 Der Upload löscht im Zielordner alles, was nicht zur Seite gehört. Der Ordner darf deshalb nichts anderes enthalten, und die Domain muss bei Strato auf genau diesen Ordner zeigen.
 
 Zugangsdaten gehören nie ins Repo.
+
+## Alter Name Domovio Media
+
+Bis November 2026 hieß die Seite Domovio Media. Repo, Ordner und der Webspace-Ordner `/domovio-media` tragen noch den alten Namen, Besucher sehen ihn nicht. domoviomedia.de bleibt registriert und leitet per `src/.htaccess` auf propertale.de weiter, damit alte Links funktionieren.
