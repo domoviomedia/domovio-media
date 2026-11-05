@@ -1,3 +1,23 @@
 User-agent: *
 Allow: /
+
+# Suchmaschinen und KI-Assistenten ausdrücklich willkommen, damit Propertale
+# in Antworten zu Immobilienfotografie im Rhein-Main-Gebiet auftauchen kann.
+User-agent: Googlebot
+User-agent: Google-Extended
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
+User-agent: Meta-ExternalAgent
+Allow: /
+
 Sitemap: https://propertale.de/sitemap.xml

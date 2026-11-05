@@ -82,23 +82,15 @@ HERO = "immobilienfoto-wintergarten-treppe"
 WORDMARK = (SRC / "assets/img/wortmarke.svg").read_text("utf-8").strip().replace(
     "<svg ", '<svg class="wortmarke" aria-hidden="true" ', 1)
 
-LOCAL_BUSINESS = json.dumps({
-    "@context": "https://schema.org",
-    "@type": ["LocalBusiness", "ProfessionalService"],
-    "@id": SITE + "/#business",
-    "name": "Propertale",
-    "description": "Immobilienfotografie, Video und Drohnenaufnahmen für Makler und private Eigentümer im Rhein-Main-Gebiet.",
-    "url": SITE + "/",
-    "email": MAIL,
-    "telephone": TEL_LINK,
-    "image": f"{SITE}/assets/img/{HERO}-1600.jpg",
-    "logo": SITE + "/assets/img/logo-512.png",
-    "priceRange": "€€",
-    "address": {"@type": "PostalAddress", "streetAddress": "Lerchenstr. 5", "postalCode": "64823",
-                "addressLocality": "Groß-Umstadt", "addressRegion": "Hessen", "addressCountry": "DE"},
-    "areaServed": ["Rhein-Main-Gebiet", "Frankfurt am Main", "Darmstadt", "Wiesbaden", "Mainz", "Offenbach am Main", "Hanau"],
-    "sameAs": [INSTAGRAM],
-}, ensure_ascii=False)
+# Einzugsgebiet wie im Google-Unternehmensprofil, damit Suchmaschinen und KI-Assistenten
+# überall dieselben Angaben finden.
+CITIES = ["Frankfurt am Main", "Darmstadt", "Offenbach am Main", "Hanau", "Wiesbaden", "Mainz", "Groß-Umstadt"]
+DISTRICTS = ["Landkreis Darmstadt-Dieburg", "Odenwaldkreis", "Main-Taunus-Kreis", "Hochtaunuskreis"]
+SERVICES = ["Immobilienfotografie", "Immobilienvideo", "Drohnenaufnahmen", "Luftbilder", "360°-Rundgang",
+            "Virtuelles Homestaging", "Dämmerungsaufnahmen", "Social-Media-Reels für Immobilien", "Exposé-Fotos"]
+DESCRIPTION = ("Propertale ist Immobilienfotografie von Fatih Gökce aus Groß-Umstadt: Fotos, Video und "
+               "Drohnenaufnahmen für Makler, Bauträger und private Eigentümer im Rhein-Main-Gebiet, "
+               "mit festen Preisen und Lieferung per Downloadlink in 3 Werktagen.")
 
 
 def offer(entry):
@@ -108,22 +100,120 @@ def offer(entry):
             "itemOffered": {"@type": "Service", "name": entry["title"], "description": entry["text"] or entry["title"]}}
 
 
-def structured_data(meta):
+# Die Adresse steht im Impressum; hier nur der Ort, wie im Google-Profil (Dienstleister ohne Ladengeschäft).
+BUSINESS = {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "ProfessionalService"],
+    "@id": SITE + "/#business",
+    "name": "Propertale",
+    "alternateName": "Propertale Immobilienfotografie",
+    "slogan": "Real Estate Stories & Visuals",
+    "description": DESCRIPTION,
+    "url": SITE + "/",
+    "email": MAIL,
+    "telephone": TEL_LINK,
+    "image": f"{SITE}/assets/img/{HERO}-1600.jpg",
+    "logo": SITE + "/assets/img/logo-512.png",
+    "priceRange": "200 € bis 1.200 €",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Überweisung",
+    "address": {"@type": "PostalAddress", "postalCode": "64823", "addressLocality": "Groß-Umstadt",
+                "addressRegion": "Hessen", "addressCountry": "DE"},
+    "areaServed": [{"@type": "City", "name": c} for c in CITIES]
+                  + [{"@type": "AdministrativeArea", "name": d} for d in DISTRICTS]
+                  + [{"@type": "Place", "name": "Rhein-Main-Gebiet"}],
+    "knowsAbout": SERVICES,
+    "founder": {"@type": "Person", "@id": SITE + "/#fatih-goekce", "name": "Fatih Gökce",
+                "jobTitle": "Immobilienfotograf", "worksFor": {"@id": SITE + "/#business"}},
+    "contactPoint": {"@type": "ContactPoint", "contactType": "Anfragen und Buchung", "email": MAIL,
+                     "telephone": TEL_LINK, "availableLanguage": ["de", "en"], "url": SITE + "/kontakt/"},
+    "sameAs": [INSTAGRAM],
+    "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Leistungen und Preise",
+                        "itemListElement": [offer(e) for e in PRICES]},
+}
+
+
+def faq(body):
+    """Fragen und Antworten aus den h2/p-Paaren der FAQ-Seite, als Text ohne Markup."""
+    def text(html):
+        return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", html)).strip()
+    pairs = re.findall(r"<h2>(.*?)</h2>\s*<p>(.*?)</p>", body, re.S)
+    return {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": text(q), "acceptedAnswer": {"@type": "Answer", "text": text(a)}}
+        for q, a in pairs]}
+
+
+def structured_data(meta, body):
     path = meta["path"]
+    if meta.get("noindex"):
+        return []
+    blocks = [BUSINESS]
     if path == "/":
-        return [LOCAL_BUSINESS]
-    blocks = []
+        blocks.append({"@context": "https://schema.org", "@type": "WebSite", "@id": SITE + "/#website",
+                       "name": "Propertale", "url": SITE + "/", "inLanguage": "de-DE",
+                       "publisher": {"@id": SITE + "/#business"}})
     if meta.get("crumb"):
-        blocks.append(json.dumps({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+        blocks.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Start", "item": SITE + "/"},
             {"@type": "ListItem", "position": 2, "name": meta["crumb"], "item": SITE + path},
-        ]}, ensure_ascii=False))
-    if path == "/leistungen/":
-        blocks.append(json.dumps({"@context": "https://schema.org", "@type": "ProfessionalService",
-                                  "@id": SITE + "/#business", "name": "Propertale", "hasOfferCatalog": {
-            "@type": "OfferCatalog", "name": "Leistungen und Preise",
-            "itemListElement": [offer(e) for e in PRICES]}}, ensure_ascii=False))
-    return blocks
+        ]})
+    if path == "/haeufige-fragen/":
+        blocks.append(faq(body))
+    return [json.dumps(b, ensure_ascii=False) for b in blocks]
+
+
+def llms_txt():
+    """Kurzer Steckbrief für KI-Assistenten (llmstxt.org), aus denselben Daten wie die Seite."""
+    groups = {}
+    for e in PRICES:
+        groups.setdefault(e["group"], []).append(f'- {e["title"]}: {price_label(e)}'
+                                                 + (f' – {e["text"]}' if e["text"] else ""))
+    prices = "\n\n".join(f"### {g}\n" + "\n".join(lines) for g, lines in groups.items())
+    return f"""# Propertale
+
+> {DESCRIPTION}
+
+Propertale ist ein Einzelunternehmen von Fatih Gökce, Immobilienfotograf in Groß-Umstadt (Hessen). \
+Kleinunternehmer gemäß § 19 UStG, alle Preise sind Endpreise ohne Umsatzsteuer.
+
+## Leistungen
+
+{", ".join(SERVICES)}. Fotos, Video und Drohne entstehen in einem Termin vor Ort. Jedes Foto wird \
+einzeln ausgewählt und bearbeitet. Lieferung per Downloadlink in 3 Werktagen, mit Express in 24 Stunden. \
+Die Medien dürfen für die Vermarktung auf allen Kanälen genutzt werden (Exposé, Immobilienportale, Website, Social Media).
+
+## Für wen
+
+Immobilienmakler, Bauträger, Hausverwaltungen und private Eigentümer, die ihre Immobilie selbst verkaufen oder vermieten.
+
+## Einzugsgebiet
+
+{", ".join(CITIES)}, {", ".join(DISTRICTS)} und das gesamte Rhein-Main-Gebiet, \
+unter anderem auch Dieburg, Babenhausen, Reinheim, Pfungstadt, Griesheim, Weiterstadt, Erbach, Michelstadt, \
+Bad König, Hofheim, Bad Soden, Eschborn, Kelkheim, Bad Homburg, Oberursel, Königstein, Kronberg und Friedrichsdorf. \
+Im ganzen Gebiet gilt dieselbe Preisliste.
+
+## Preise
+
+{prices}
+
+## Kontakt
+
+- Website: {SITE}/
+- Anfrage: {SITE}/kontakt/
+- E-Mail: {MAIL}
+- Telefon: {TEL}
+- Instagram: {INSTAGRAM}
+
+## Seiten
+
+- [Leistungen und Preise]({SITE}/leistungen/)
+- [Referenzen]({SITE}/referenzen/)
+- [Ablauf eines Shootings]({SITE}/ablauf/)
+- [Immobilienfotograf Rhein-Main]({SITE}/immobilienfotograf-rhein-main/)
+- [Häufige Fragen]({SITE}/haeufige-fragen/)
+- [Impressum]({SITE}/impressum/)
+"""
 
 
 def last_change(file):
@@ -138,7 +228,7 @@ def page(meta, body):
     nav = "".join(f'<a href="{href}"{" aria-current=page" if href == path else ""}>{escape(label)}</a>'
                   for href, label in NAV)
     robots = '<meta name="robots" content="noindex">' if meta.get("noindex") else ""
-    ld = "".join(f'<script type="application/ld+json">{block}</script>' for block in structured_data(meta))
+    ld = "".join(f'<script type="application/ld+json">{block}</script>' for block in structured_data(meta, body))
     preload = (f'<link rel="preload" as="image" href="/assets/img/{HERO}-1600.jpg" imagesizes="100vw" '
                f'imagesrcset="/assets/img/{HERO}-800.jpg 800w, /assets/img/{HERO}-1600.jpg 1600w">') if path == "/" else ""
     canonical = f'<link rel="canonical" href="{SITE}{path}">' if not meta.get("noindex") else ""
@@ -162,6 +252,9 @@ def page(meta, body):
 <meta property="og:image:alt" content="Helles Wohnhaus mit Wintergarten und Holztreppe, fotografiert von Propertale">
 <meta name="twitter:card" content="summary_large_image">
 {preload}
+<meta name="author" content="Fatih Gökce, Propertale">
+<meta name="geo.region" content="DE-HE">
+<meta name="geo.placename" content="Groß-Umstadt">
 <meta name="theme-color" content="#f3efe6">
 <link rel="icon" href="/assets/img/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
@@ -199,6 +292,9 @@ def main():
     shutil.copytree(SRC / "assets", OUT / "assets")
     for name in ("kontakt.php", ".htaccess", "robots.txt"):
         shutil.copy(SRC / name, OUT / name)
+    # Schlüsseldatei für IndexNow (Bing, Yandex): beweist, dass Meldungen von dieser Website kommen.
+    for key in SRC.glob("[0-9a-f]" * 32 + ".txt"):
+        shutil.copy(key, OUT / key.name)
 
     urls = []
     for file in sorted((SRC / "pages").glob("*.html")):
@@ -211,6 +307,7 @@ def main():
         if not meta.get("noindex"):
             urls.append(f"<url><loc>{SITE}{meta['path']}</loc>{last_change(file)}</url>")
 
+    (OUT / "llms.txt").write_text(llms_txt(), "utf-8")
     (OUT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
         + "".join(urls) + "</urlset>\n", "utf-8")
